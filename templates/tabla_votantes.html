@@ -1,0 +1,43 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Edad</th>
+            <th>Ocupación</th>
+            <th>Télefono</th>
+            <th>Punto</th>
+            <th>Mesa</th>
+            <th>Líder de referencia</th>
+            <th>Líder Principal</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for v in votantes %}
+        <tr>
+            <td>{{ v.nombre }}</td>
+            <td>{{ v.cedula }}</td>
+            <td>{{ v.edad }}</td>
+            <td>{{ v.ocupacion }}</td>
+            <td>{{ v.telefono }}</td>
+            <td>{{ v.punto_vacunacion }}</td>
+            <td>{{ v.mesa_vacunacion }}</td>
+            <td>{{ v.lider_referencia }}</td>
+            <td>{{ v.lider_principal }}</td>
+            
+            <td>
+                <a href="{{ url_for('editar_votante', id=v.id) }}"
+                   class="btn btn-warning btn-sm">
+                   Editar
+                </a>
+
+                <a href="{{ url_for('eliminar_votante', id=v.id) }}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Eliminar este registro?');">
+                   Eliminar
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

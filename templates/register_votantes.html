@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6 col-lg-5">
+
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+
+                <h4 class="text-center mb-4">📝 Registro de votantes</h4>
+
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages %}
+                      <div class="alert alert-warning text-center">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+
+                    <input name="nombre" class="form-control mb-2" placeholder="Nombre completo" required>
+                    <input name="cedula" class="form-control mb-2" placeholder="Cédula" required>
+                    <input type="number" name="edad" class="form-control mb-2" placeholder="Edad" required>
+                    <input type="number" name="telefono" class="form-control mb-2" placeholder="Télefono" required>
+                    <input name="ocupacion" class="form-control mb-2" placeholder="Ocupación" required>
+                    <input name="punto" class="form-control mb-2" placeholder="Punto de vacunación" required>
+                    <input name="mesa" class="form-control mb-2" placeholder="Mesa de votación" required>
+                    <input name="lider_r" class="form-control mb-3" placeholder="Líder de referencia" required>
+                    <input name="lider" class="form-control mb-3" placeholder="Líder principal" required>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-success w-100">
+                            Guardar votante
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+

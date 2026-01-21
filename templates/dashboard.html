@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<head>
+    <title>Crear usuario</title>
+</head>
+        <body>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Listado de votantes</h4>
+
+    <a href="{{ url_for('registrar') }}" class="btn btn-success">
+        + Nuevo votante
+    </a>
+</div>
+<div class="card shadow-sm mb-3">
+    
+    <div class="card-body">
+        <div class="row g-2">
+            <div class="col-md-4">
+                <input id="cedula" class="form-control" placeholder="Buscar por cédula">
+            </div>
+            <div class="col-md-4">
+                <input id="lider" class="form-control" placeholder="Buscar por líder">
+            </div>
+            <div class="col-md-4">
+                <input id="punto" class="form-control" placeholder="Buscar por punto">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="resultado">
+    {% include 'tabla_votantes.html' %}
+</div>
+<a href="{{ url_for('exportar_excel') }}" class="btn btn-success btn-sm">
+    Exportar a Excel
+</a>
+    </body>
+</html>
+<script>
+function buscar() {
+
+    const cedula = document.getElementById('cedula').value
+    const lider = document.getElementById('lider').value
+    const punto = document.getElementById('punto').value
+
+    fetch(`/buscar_votantes?cedula=${cedula}&lider=${lider}&punto=${punto}`)
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById('resultado').innerHTML = html
+        })
+}
+
+document.querySelectorAll('#cedula, #lider, #punto').forEach(input => {
+    input.addEventListener('keyup', buscar)
+})
+
+</script>
+{%endblock%}
