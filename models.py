@@ -21,7 +21,7 @@ class Votante(db.Model):
     cedula = db.Column(db.String(20), unique=True)
     edad = db.Column(db.Integer)
     ocupacion=db.Column(db.String(30),unique=True)
-    telefono=db.Column(db.Integer)
+    telefono=db.Column(db.String(20))
     punto_vacunacion = db.Column(db.String(100))
     mesa_vacunacion = db.Column(db.String(50))
     lider_referencia=db.Column(db.String(50))
