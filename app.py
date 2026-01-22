@@ -50,7 +50,6 @@ def login():
     return render_template('login.html')
 
 @app.route('/crear_usuario', methods=['GET', 'POST'])
-@login_required
 def crear_usuario():
     if request.method == 'POST':
         username = request.form['username']
