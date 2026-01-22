@@ -1,6 +1,11 @@
+import os
+
 class Config:
-    SECRET_KEY = 'clave-super-secreta'
+    SECRET_KEY = os.environ.get("SECRET_KEY", "clave-super-secreta")
+
     SQLALCHEMY_DATABASE_URI = (
-        'mysql+pymysql://root:@localhost/app_votantes'
+        os.environ.get("MYSQL_URL") or
+        "mysql+pymysql://root:@localhost/app_votantes"
     )
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
