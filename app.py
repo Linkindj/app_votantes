@@ -252,5 +252,4 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port)
 
 with app.app_context():
-    db.engine.connect()
-    print("🔥 MySQL conectado correctamente")
+    db.create_all()
