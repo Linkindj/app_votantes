@@ -1,6 +1,7 @@
 from flask import Flask, flash, render_template, request, redirect, url_for
 import pandas as pd
 import os
+from flask_sqlalchemy import SQLAlchemy
 from flask import send_file
 from io import BytesIO
 from flask_login import (
@@ -18,6 +19,7 @@ from models import db, User, Votante
 app = Flask(__name__)
 app.config.from_object(Config)
 
+db = SQLAlchemy()
 db.init_app(app)
 
 login_manager = LoginManager(app)
