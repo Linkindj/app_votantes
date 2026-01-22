@@ -14,12 +14,14 @@ from flask_login import (
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from config import Config
-from models import db, User, Votante
+from models import  User, Votante
+
+db = SQLAlchemy()
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
-db = SQLAlchemy()
+
 db.init_app(app)
 
 login_manager = LoginManager(app)
