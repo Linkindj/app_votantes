@@ -1,5 +1,6 @@
 from flask import Flask, flash, render_template, request, redirect, url_for
 import pandas as pd
+import os
 from flask import send_file
 from io import BytesIO
 from flask_login import (
@@ -242,7 +243,6 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
