@@ -218,7 +218,7 @@ def editar_votante(id):
         votante.punto_vacunacion = request.form['punto']
         votante.mesa = request.form['mesa']
         votante.lider_referencia = request.form['lider_r']
-        votante.lider_principal = request.form['lider']
+        votante.lider_id = request.form['lider']
 
         db.session.commit()
         flash('Votante actualizado correctamente')
