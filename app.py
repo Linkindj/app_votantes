@@ -189,7 +189,7 @@ def buscar_votantes():
     if cedula:
         query = query.filter(Votante.cedula.like(f"%{cedula}%"))
     if lider:
-        query = query.filter(Votante.lider_principal.like(f"%{lider}%"))
+        query = query.filter(Votante.lider_id.like(f"%{lider}%"))
     if punto:
         query = query.filter(Votante.punto_vacunacion.like(f"%{punto}%"))
 
@@ -223,7 +223,6 @@ def editar_votante(id):
         db.session.commit()
         flash('Votante actualizado correctamente')
         return redirect(url_for('dashboard'))
-
     return render_template('editar_votante.html', votante=votante, puntos=puntos, lideres=lideres )
 
 @app.route('/eliminar/<int:id>')
@@ -247,9 +246,6 @@ def eliminar_votante(id):
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
-
-
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
