@@ -27,9 +27,21 @@
                     <input type="number" name="telefono" class="form-control mb-2" placeholder="Télefono" required>
                     <input name="ocupacion" class="form-control mb-2" placeholder="Ocupación" required>
                     <input name="punto" class="form-control mb-2" placeholder="Punto de vacunación" required>
-                    <input name="mesa" class="form-control mb-2" placeholder="Mesa de votación" required>
+                    <label>Mesa de votación</label>
+    <select name="mesa" required>
+        <option value="">Seleccione una mesa</option>
+        {% for mesa in mesas %}
+            <option value="{{ mesa.id }}">{{ mesa.nombre }}</option>
+        {% endfor %}
+    </select>
                     <input name="lider_r" class="form-control mb-3" placeholder="Líder de referencia" required>
-                    <input name="lider" class="form-control mb-3" placeholder="Líder principal" required>
+                   <label>Líder principal</label>
+    <select name="lider" required>
+        <option value="">Seleccione un líder</option>
+        {% for lider in lideres %}
+            <option value="{{ lider.id }}">{{ lider.nombre }}</option>
+        {% endfor %}
+    </select>
 
                     <div class="d-flex gap-2">
                         <button class="btn btn-success w-100">

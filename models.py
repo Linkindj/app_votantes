@@ -27,3 +27,14 @@ class Votante(db.Model):
     lider_referencia=db.Column(db.String(50))
     lider_principal = db.Column(db.String(100))
     usuario_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+class MesaVotacion(db.Model):
+    __tablename__ = 'mesa_votacion'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(100), nullable=False)
+
+
+class Lider(db.Model):
+    __tablename__ = 'lider'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(100), nullable=False)
