@@ -99,7 +99,7 @@ def registrar():
             punto_vacunacion=request.form['punto'],
             mesa_vacunacion=request.form['mesa'],
             lider_referencia=request.form['lider_r'],
-            lider_principal=request.form['lider'],
+            lider_id=request.form['lider'],
             usuario_id=current_user.id
         )
         db.session.add(votante)
@@ -189,7 +189,7 @@ def buscar_votantes():
     if cedula:
         query = query.filter(Votante.cedula.like(f"%{cedula}%"))
     if lider:
-        query = query.filter(Votante.lider_id.like(f"%{lider}%"))
+        query = query.filter(Votante.lider.like(f"%{lider}%"))
     if punto:
         query = query.filter(Votante.punto_vacunacion.like(f"%{punto}%"))
 
