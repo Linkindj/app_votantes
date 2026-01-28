@@ -14,7 +14,7 @@ from flask_login import (
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from config import Config
-from models import db, User, Votante
+from models import db, User, Votante, lugarVotacion, Lider
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -246,6 +246,14 @@ def eliminar_votante(id):
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+@app.route('/formulario')
+def formulario():
+    puntos = lugarVotacion.query.all()
+    lideres = Lider.query.all()
+    return render_template('formulario.html', puntos=puntos, lideres=lideres)
+
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
