@@ -251,7 +251,7 @@ def logout():
 def formulario():
     puntos = lugarVotacion.query.all()
     lideres = Lider.query.all()
-    return render_template('formulario.html', puntos=puntos, lideres=lideres)
+    return render_template('register_votantes.html', puntos=puntos, lideres=lideres)
 
 
 
