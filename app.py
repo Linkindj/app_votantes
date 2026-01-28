@@ -77,7 +77,8 @@ from flask_login import login_required, current_user
 @app.route('/registrar', methods=['GET', 'POST'])
 @login_required
 def registrar():
-
+    puntos = lugarVotacion.query.all()
+    lideres = Lider.query.all()
     if request.method == 'POST':
 
         # Normalizar cédula
@@ -101,14 +102,13 @@ def registrar():
             lider_principal=request.form['lider'],
             usuario_id=current_user.id
         )
-
         db.session.add(votante)
         db.session.commit()
 
         flash('✅ Votante registrado correctamente')
         return redirect(url_for('dashboard'))
 
-    return render_template('register_votantes.html')
+    return render_template('register_votantes.html', puntos=puntos, lideres=lideres)
 
 @app.route('/exportar_excel')
 @login_required
