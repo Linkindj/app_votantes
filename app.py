@@ -189,7 +189,9 @@ def buscar_votantes():
     if cedula:
         query = query.filter(Votante.cedula.like(f"%{cedula}%"))
     if lider:
-        query = query.filter(Votante.lider.like(f"%{lider}%"))
+        query = query.join(Votante.lider).filter(
+            Lider.nombre.like(f"%{lider}%")
+        )
     if punto:
         query = query.filter(Votante.punto_vacunacion.like(f"%{punto}%"))
 
