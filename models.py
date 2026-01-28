@@ -25,8 +25,10 @@ class Votante(db.Model):
     punto_vacunacion = db.Column(db.String(100))
     mesa_vacunacion = db.Column(db.String(50))
     lider_referencia=db.Column(db.String(50))
-    lider_principal = db.Column(db.String(100))
+    lider_id = db.Column(db.Integer, db.ForeignKey('lider.id'))
     usuario_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    lider = db.relationship('Lider', backref='votantes')
 
 class lugarVotacion(db.Model):
     __tablename__ = 'lugar_votacion'

@@ -57,10 +57,12 @@
         </div>
 
         <div class="mb-2">
-            <label class="form-label">Punto de vacunación</label>
-            <input type="text" name="punto"
-                   class="form-control"
-                   value="{{ votante.punto_vacunacion }}">
+              <select name="mesa" class="form-control mb-2" required>
+        <option value="">Seleccione punto de votación</option>
+        {% for punto in puntos %}
+            <option value="{{ punto.id }}">{{ punto.nombre }}</option>
+        {% endfor %}
+    </select>
         </div>
 
         <div class="mb-2">
@@ -78,10 +80,12 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Líder principal</label>
-            <input type="text" name="lider"
-                   class="form-control"
-                   value="{{ votante.lider_principal }}">
+            <select name="lider" class="form-control mb-2" required>
+                <option value="">Seleccione Lider Principal</option>
+                {% for lider in lideres %}
+                    <option value="{{ lider.id }}">{{ lider.nombre }}</option>
+                {% endfor %}
+            </select>
         </div>
 
         <div class="d-flex gap-2">

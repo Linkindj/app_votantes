@@ -204,7 +204,8 @@ def buscar_votantes():
 @login_required
 def editar_votante(id):
     votante = Votante.query.get_or_404(id)
-
+    puntos = lugarVotacion.query.all()
+    lideres = Lider.query.all()
     # 🔐 Seguridad: solo quien lo creó puede editar
     if votante.usuario_id != current_user.id:
         abort(403)
@@ -223,7 +224,7 @@ def editar_votante(id):
         flash('Votante actualizado correctamente')
         return redirect(url_for('dashboard'))
 
-    return render_template('editar_votante.html', votante=votante)
+    return render_template('editar_votante.html', votante=votante, puntos=puntos, lideres=lideres )
 
 @app.route('/eliminar/<int:id>')
 @login_required
@@ -247,11 +248,6 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-@app.route('/formulario')
-def formulario():
-    puntos = lugarVotacion.query.all()
-    lideres = Lider.query.all()
-    return render_template('register_votantes.html', puntos=puntos, lideres=lideres)
 
 
 

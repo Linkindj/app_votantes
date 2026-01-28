@@ -34,9 +34,8 @@
     </select>
                     <input name="mesa" class="form-control mb-2" placeholder="Mesa de votación" required>
                     <input name="lider_r" class="form-control mb-3" placeholder="Líder de referencia" required>
-                   <label>Líder principal</label>
     <select name="lider" class="form-control mb-2" required>
-        <option value="">Seleccione un líder</option>
+        <option value="">Seleccione Lider Principal</option>
         {% for lider in lideres %}
             <option value="{{ lider.id }}">{{ lider.nombre }}</option>
         {% endfor %}
