@@ -179,7 +179,7 @@ def dashboard():
 @app.route('/buscar_votantes')
 @login_required
 def buscar_votantes():
-
+    lideres = Lider.query.all()
     cedula = request.args.get('cedula', '')
     lider = request.args.get('lider', '')
     punto = request.args.get('punto', '')
@@ -198,7 +198,7 @@ def buscar_votantes():
 
     return render_template(
         'tabla_votantes.html',
-        votantes=votantes
+        votantes=votantes, lideres=lideres
     )
 
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
