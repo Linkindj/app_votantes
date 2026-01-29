@@ -180,6 +180,7 @@ def dashboard():
 @login_required
 def buscar_votantes():
     lideres = Lider.query.all()
+    puntos = lugarVotacion.query.all()
     cedula = request.args.get('cedula', '')
     lider = request.args.get('lider', '')
     punto = request.args.get('punto', '')
@@ -192,13 +193,13 @@ def buscar_votantes():
         query = query.filter(Votante.lider_id==lider)
 
     if punto:
-        query = query.filter(Votante.punto_vacunacion.like(f"%{punto}%"))
+        query = query.filter(Votante.punto_id==punto)
 
     votantes = query.all()
 
     return render_template(
         'tabla_votantes.html',
-        votantes=votantes, lideres=lideres
+        votantes=votantes, lideres=lideres, puntos=puntos
     )
 
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])

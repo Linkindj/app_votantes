@@ -23,14 +23,19 @@
             </div>
             <div class="col-md-4">
                 <select id="lider" class="form-control">
-                    <option value="">-- Todos --</option>
+                    <option value="">-- Lider principal --</option>
                     {% for l in lideres %}
                         <option value="{{ l.id }}">{{ l.nombre }}</option>
                 {% endfor %}
                 </select>
             </div>
             <div class="col-md-4">
-                <input id="punto" class="form-control" placeholder="Buscar por punto">
+                <select id="punto" class="form-control">
+                    <option value="">-- Punto de votación --</option>
+                    {% for p in puntos %}
+                        <option value="{{ p.id }}">{{ p.nombre }}</option>
+                {% endfor %}
+                </select>
             </div>
         </div>
     </div>
@@ -62,7 +67,7 @@ document.querySelectorAll('#cedula, #lider, #punto').forEach(input => {
     input.addEventListener('keyup', buscar)
 })
 document.getElementById('cedula').addEventListener('keyup', buscar)
-document.getElementById('punto').addEventListener('keyup', buscar)
+document.getElementById('punto').addEventListener('change', buscar)
 
 // Select → change
 document.getElementById('lider').addEventListener('change', buscar)
