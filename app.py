@@ -160,7 +160,7 @@ def dashboard():
     if lider:
         query = query.filter(Votante.lider_id==lider)
     if punto:
-        query = query.filter(Votante.punto_vacunacion.like(f"%{punto}%"))
+        query = query.filter(Votante.punto_id==punto)
 
     if cedula:
         query = query.filter(Votante.cedula.like(f"%{cedula}%"))
