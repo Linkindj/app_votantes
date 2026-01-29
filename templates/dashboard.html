@@ -61,6 +61,10 @@ function buscar() {
 document.querySelectorAll('#cedula, #lider, #punto').forEach(input => {
     input.addEventListener('keyup', buscar)
 })
+document.getElementById('cedula').addEventListener('keyup', buscar)
+document.getElementById('punto').addEventListener('keyup', buscar)
 
+// Select → change
+document.getElementById('lider').addEventListener('change', buscar)
 </script>
 {%endblock%}
