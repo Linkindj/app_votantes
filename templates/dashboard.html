@@ -22,7 +22,12 @@
                 <input id="cedula" class="form-control" placeholder="Buscar por cédula">
             </div>
             <div class="col-md-4">
-                <input id="lider" class="form-control" placeholder="Buscar por líder">
+                <select id="lider" class="form-control">
+                    <option value="">-- Todos --</option>
+                    {% for l in lideres %}
+                        <option value="{{ l.id }}">{{ l.nombre }}</option>
+                {% endfor %}
+                </select>
             </div>
             <div class="col-md-4">
                 <input id="punto" class="form-control" placeholder="Buscar por punto">

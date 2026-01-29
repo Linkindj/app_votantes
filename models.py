@@ -29,7 +29,7 @@ class Votante(db.Model):
     usuario_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     lider = db.relationship('Lider', backref='votantes')
-    lider = db.relationship('Lider', backref='votantes')
+    
 
 class lugarVotacion(db.Model):
     __tablename__ = 'lugar_votacion'

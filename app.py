@@ -124,7 +124,7 @@ def exportar_excel():
             'Edad': v.edad,
             'Punto de vacunación': v.punto_vacunacion,
             'Mesa': v.mesa_vacunacion,
-            'Líder': v.lider_principal
+            'Líder': v.lider_id
         })
 
     df = pd.DataFrame(data)
@@ -189,9 +189,8 @@ def buscar_votantes():
     if cedula:
         query = query.filter(Votante.cedula.like(f"%{cedula}%"))
     if lider:
-        query = query.join(Votante.lider).filter(
-            Lider.nombre.like(f"%{lider}%")
-        )
+        query = query.filter(Votante.lider_id==lider)
+
     if punto:
         query = query.filter(Votante.punto_vacunacion.like(f"%{punto}%"))
 
