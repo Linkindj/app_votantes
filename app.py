@@ -150,6 +150,7 @@ def test():
 @login_required
 def dashboard():
     lideres = Lider.query.all()
+    puntos = lugarVotacion.query.all()
     lider = request.args.get('lider')
     punto = request.args.get('punto')
     cedula = request.args.get('cedula')
@@ -172,7 +173,8 @@ def dashboard():
         lider=lider,
         punto=punto,
         cedula=cedula,
-        lideres=lideres
+        lideres=lideres,
+        puntos=puntos
     )
 
 
