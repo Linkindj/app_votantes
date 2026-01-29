@@ -149,7 +149,7 @@ def test():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-
+    lideres = Lider.query.all()
     lider = request.args.get('lider')
     punto = request.args.get('punto')
     cedula = request.args.get('cedula')
@@ -157,8 +157,7 @@ def dashboard():
     query = Votante.query
 
     if lider:
-        query = query.filter(Votante.lider_principal.like(f"%{lider}%"))
-
+        query = query.filter(Votante.lider_id==lider)
     if punto:
         query = query.filter(Votante.punto_vacunacion.like(f"%{punto}%"))
 
@@ -172,7 +171,8 @@ def dashboard():
         votantes=votantes,
         lider=lider,
         punto=punto,
-        cedula=cedula
+        cedula=cedula,
+        lideres=lideres
     )
 
 
