@@ -96,7 +96,7 @@ def registrar():
             edad=request.form['edad'],
             ocupacion=request.form['ocupacion'],
             telefono=request.form['telefono'],
-            punto_vacunacion=request.form['punto'],
+            punto_id=request.form['punto'],
             mesa_vacunacion=request.form['mesa'],
             lider_referencia=request.form['lider_r'],
             lider_id=request.form['lider'],
@@ -217,7 +217,7 @@ def editar_votante(id):
         votante.edad = request.form['edad']
         votante.telefono = request.form['telefono']
         votante.ocupacion = request.form['ocupacion']
-        votante.punto_vacunacion = request.form['punto']
+        votante.punto_id = request.form['punto']
         votante.mesa = request.form['mesa']
         votante.lider_referencia = request.form['lider_r']
         votante.lider_id = request.form['lider']
