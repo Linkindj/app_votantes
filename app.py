@@ -1,4 +1,4 @@
-from flask import Flask, flash, render_template, request, redirect, url_for,abort
+from flask import Flask, flash, render_template, request, redirect, url_for,abort, jsonify
 import pandas as pd
 import os
 from flask_sqlalchemy import SQLAlchemy
