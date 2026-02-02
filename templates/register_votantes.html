@@ -23,6 +23,7 @@
 
                     <input name="nombre" class="form-control mb-2" placeholder="Nombre completo" required>
                     <input name="cedula" class="form-control mb-2" placeholder="Cédula" required>
+                    <small id="mensajeCedula"></small>
                     <input type="number" name="edad" class="form-control mb-2" placeholder="Edad" required>
                     <input type="number" name="telefono" class="form-control mb-2" placeholder="Télefono" required>
                     <input name="ocupacion" class="form-control mb-2" placeholder="Ocupación" required>
@@ -55,5 +56,30 @@
 
     </div>
 </div>
+<script>
+const cedulaInput = document.getElementById('cedula')
+const mensaje = document.getElementById('mensajeCedula')
+
+cedulaInput.addEventListener('keyup', () => {
+    const cedula = cedulaInput.value.trim()
+
+    if (cedula.length < 5) {
+        mensaje.textContent = ''
+        return
+    }
+
+    fetch(`/validar_cedula?cedula=${cedula}`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.existe) {
+                mensaje.textContent = '⚠️ Esta cédula ya está registrada'
+                mensaje.style.color = 'red'
+            } else {
+                mensaje.textContent = '✅ Cédula disponible'
+                mensaje.style.color = 'green'
+            }
+        })
+})
+</script>
 {% endblock %}
 

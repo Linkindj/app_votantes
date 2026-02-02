@@ -177,6 +177,17 @@ def dashboard():
         puntos=puntos
     )
 
+@app.route('/validar_cedula')
+@login_required
+def validar_cedula():
+    cedula = request.args.get('cedula', '').strip()
+
+    if not cedula:
+        return jsonify({'existe': False})
+
+    existe = Votante.query.filter_by(cedula=cedula).first() is not None
+
+    return jsonify({'existe': existe})
 
 @app.route('/buscar_votantes')
 @login_required
