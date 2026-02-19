@@ -33,7 +33,12 @@
             <option value="{{ punto.id }}">{{ punto.nombre }}</option>
         {% endfor %}
     </select>
-                    <input name="mesa" class="form-control mb-2" placeholder="Mesa de votación" required>
+                    <select name="mesa" class="form-control mb-2" required>
+                    <option value="">Seleccione mesa</option>
+                    {% for i in range(1, 31) %}
+                     <option value="{{ i }}">Mesa {{ i }}</option>
+                    {% endfor %}
+                    </select>
                     <input name="lider_r" class="form-control mb-3" placeholder="Líder de referencia" required>
     <select name="lider" class="form-control mb-2" required>
         <option value="">Seleccione Lider Principal</option>
