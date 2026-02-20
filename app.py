@@ -98,7 +98,7 @@ def registrar():
             telefono=request.form['telefono'],
             punto_id=request.form['punto'],
             mesa_vacunacion=request.form['mesa'],
-            lider_referencia=request.form['lider_r'],
+            lider_referencia=request.form.get('lider_r') or None,
             lider_id=request.form['lider'],
             usuario_id=current_user.id
         )
