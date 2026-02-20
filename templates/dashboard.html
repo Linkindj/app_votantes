@@ -48,10 +48,10 @@
 function buscar() {
 
     const cedula = document.getElementById('cedula').value
-    const lider = document.getElementById('nombre').value
+    const nombre = document.getElementById('nombre').value
     const punto = document.getElementById('punto').value
 
-    fetch(`/buscar_votantes?cedula=${cedula}&lider=${lider}&punto=${punto}`)
+    fetch(`/buscar_votantes?cedula=${cedula}&nombre=${nombre}&punto=${punto}`)
         .then(res => res.text())
         .then(html => {
             document.getElementById('resultado').innerHTML = html
