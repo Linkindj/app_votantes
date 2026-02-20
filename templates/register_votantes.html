@@ -41,11 +41,10 @@
                     </select>
                     <select name="lider" class="form-control mb-2" required>
         <option value="">¿Es contratista?</option>
-        {% for lider in lideres %}
-            <option value="{{ lider.id }}">{{ lider.nombre }}</option>
-        {% endfor %}
+        <option value="SI">SI</option>
+        <option value="NO">NO</option>
     </select>
-                    <input name="lider_r" class="form-control mb-3" placeholder="Líder de referencia">
+                    <input name="lider_r" id="lider_r" class="form-control mb-3" placeholder="Líder de referencia" disabled>
 
                     <div class="d-flex gap-2">
                         <button class="btn btn-success w-100">
@@ -84,7 +83,17 @@ cedulaInput.addEventListener('keyup', () => {
                 mensaje.style.color = 'green'
             }
         })
-})
+}) 
+document.getElementById("lider").addEventListener("change",function(){
+    let campo = 
+    document.getElementById=("lider_r");
+        if(this.value=="SI"){
+            campo.disabled =false;
+        }else{
+            campo.disabled=true;
+            campo.value="";
+        }
+        });
 </script>
 {% endblock %}
 
