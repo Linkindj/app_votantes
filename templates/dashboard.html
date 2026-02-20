@@ -22,12 +22,7 @@
                 <input id="cedula" class="form-control" placeholder="Buscar por cédula">
             </div>
             <div class="col-md-4">
-                <select id="lider" class="form-control">
-                    <option value="">-- Lider principal --</option>
-                    {% for l in lideres %}
-                        <option value="{{ l.id }}">{{ l.nombre }}</option>
-                {% endfor %}
-                </select>
+                <input id="nombre" class="form-control" placeholder="Buscar por nombre">
             </div>
             <div class="col-md-4">
                 <select id="punto" class="form-control">
@@ -53,7 +48,7 @@
 function buscar() {
 
     const cedula = document.getElementById('cedula').value
-    const lider = document.getElementById('lider').value
+    const lider = document.getElementById('nombre').value
     const punto = document.getElementById('punto').value
 
     fetch(`/buscar_votantes?cedula=${cedula}&lider=${lider}&punto=${punto}`)
@@ -63,13 +58,13 @@ function buscar() {
         })
 }
 
-document.querySelectorAll('#cedula, #lider, #punto').forEach(input => {
+document.querySelectorAll('#cedula, #nombre, #punto').forEach(input => {
     input.addEventListener('keyup', buscar)
 })
 document.getElementById('cedula').addEventListener('keyup', buscar)
 document.getElementById('punto').addEventListener('change', buscar)
 
 // Select → change
-document.getElementById('lider').addEventListener('change', buscar)
+document.getElementById('nombre').addEventListener('keyup', buscar)
 </script>
 {%endblock%}

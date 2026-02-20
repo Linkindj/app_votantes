@@ -39,13 +39,13 @@
                      <option value="{{ i }}">Mesa {{ i }}</option>
                     {% endfor %}
                     </select>
-                    <input name="lider_r" class="form-control mb-3" placeholder="Líder de referencia" required>
-    <select name="lider" class="form-control mb-2" required>
-        <option value="">Seleccione Lider Principal</option>
+                    <select name="lider" class="form-control mb-2" required>
+        <option value="">¿Es contratista?</option>
         {% for lider in lideres %}
             <option value="{{ lider.id }}">{{ lider.nombre }}</option>
         {% endfor %}
     </select>
+                    <input name="lider_r" class="form-control mb-3" placeholder="Líder de referencia">
 
                     <div class="d-flex gap-2">
                         <button class="btn btn-success w-100">

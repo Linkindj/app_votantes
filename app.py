@@ -192,18 +192,17 @@ def validar_cedula():
 @app.route('/buscar_votantes')
 @login_required
 def buscar_votantes():
-    lideres = Lider.query.all()
     puntos = lugarVotacion.query.all()
     cedula = request.args.get('cedula', '')
-    lider = request.args.get('lider', '')
+    nombre= request.args.get('nombre', '')
     punto = request.args.get('punto', '')
 
     query = Votante.query
 
     if cedula:
         query = query.filter(Votante.cedula.like(f"%{cedula}%"))
-    if lider:
-        query = query.filter(Votante.lider_id==lider)
+    if nombre:
+        query = query.filter(Votante.nombre.like(f"%{nombre}%"))
 
     if punto:
         query = query.filter(Votante.punto_id==punto)
@@ -212,7 +211,7 @@ def buscar_votantes():
 
     return render_template(
         'tabla_votantes.html',
-        votantes=votantes, lideres=lideres, puntos=puntos
+        votantes=votantes, puntos=puntos
     )
 
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])

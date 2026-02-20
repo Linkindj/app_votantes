@@ -71,6 +71,14 @@
                    class="form-control"
                    value="{{ votante.mesa_vacunacion }}">
         </div>
+<div class="mb-3">
+            <select name="lider" class="form-control mb-2" required>
+                <option value="">Es contratista?</option>
+                {% for lider in lideres %}
+                    <option value="{{ lider.id }}">{{ lider.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
 <div class="mb-3">
             <label class="form-label">Líder de referencia</label>
@@ -79,15 +87,7 @@
                    value="{{ votante.lider_referencia }}">
         </div>
 
-        <div class="mb-3">
-            <select name="lider" class="form-control mb-2" required>
-                <option value="">Seleccione Lider Principal</option>
-                {% for lider in lideres %}
-                    <option value="{{ lider.id }}">{{ lider.nombre }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
+        
         <div class="d-flex gap-2">
             <button type="submit" class="btn btn-success">
                 Guardar cambios
