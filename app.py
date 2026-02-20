@@ -91,7 +91,7 @@ def registrar():
             return redirect(url_for('registrar'))
 
         votante = Votante(
-            nombre=request.form['nombre'].strip().upper(),
+            nombre=request.form['nombre'].strip(),
             cedula=cedula,
             edad=request.form['edad'],
             ocupacion=request.form['ocupacion'],
