@@ -91,7 +91,7 @@ def registrar():
             return redirect(url_for('registrar'))
 
         votante = Votante(
-            nombre=request.form['nombre'].strip(),
+            nombre=request.form['nombre'].strip().upper(),
             cedula=cedula,
             edad=request.form['edad'],
             ocupacion=request.form['ocupacion'],
@@ -202,7 +202,7 @@ def buscar_votantes():
     if cedula:
         query = query.filter(Votante.cedula.like(f"%{cedula}%"))
     if nombre:
-        query = query.filter(Votante.nombre.like(f"%{nombre}%"))
+        query = query.filter(Votante.nombre.ilike(f"%{nombre}%"))
 
     if punto:
         query = query.filter(Votante.punto_id==punto)
@@ -225,7 +225,7 @@ def editar_votante(id):
         abort(403)
 
     if request.method == 'POST':
-        votante.nombre = request.form['nombre']
+        votante.nombre = request.form['nombre'].upper()
         votante.edad = request.form['edad']
         votante.telefono = request.form['telefono']
         votante.ocupacion = request.form['ocupacion']
