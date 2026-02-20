@@ -73,10 +73,9 @@
         </div>
 <div class="mb-3">
             <select name="lider" class="form-control mb-2" required>
-                <option value="">Es contratista?</option>
-                {% for lider in lideres %}
-                    <option value="{{ lider.id }}">{{ lider.nombre }}</option>
-                {% endfor %}
+                <option value="">¿Es contratista?</option>
+        <option value="SI">SI</option>
+        <option value="NO">NO</option>
             </select>
         </div>
 
