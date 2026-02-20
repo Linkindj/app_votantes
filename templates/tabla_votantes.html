@@ -23,7 +23,7 @@
             <td>{{ v.lugar_votacion.nombre}}</td>
             <td>{{ v.mesa_vacunacion }}</td>
             <td>{{ v.lider_referencia }}</td>
-            <td>{{ v.lider.nombre if v.lider else 'Sin líder' }}</td>
+            <td>{{ v.lider }}</td>
             
             <td>
                 <a href="{{ url_for('editar_votante', id=v.id) }}"
