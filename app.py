@@ -122,7 +122,7 @@ def exportar_excel():
             'Nombre': v.nombre,
             'Cédula': v.cedula,
             'Edad': v.edad,
-            'Punto de vacunación': v.punto_vacunacion,
+            'Punto de vacunación': v.punto_id,
             'Mesa': v.mesa_vacunacion,
             'Líder': v.lider_id
         })
