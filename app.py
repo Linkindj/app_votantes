@@ -97,6 +97,7 @@ def registrar():
             ocupacion=request.form['ocupacion'],
             telefono=request.form['telefono'],
             punto_id=request.form['punto'],
+            lider_principal=request.form['lider_p'],
             mesa_vacunacion=request.form['mesa'],
             lider_referencia=request.form.get('lider_r') or None,
             lider_id=request.form['lider'],
@@ -122,9 +123,11 @@ def exportar_excel():
             'Nombre': v.nombre,
             'Cédula': v.cedula,
             'Edad': v.edad,
+            'Lider Principal':v.lider_principal,
+            'Lider que recomineda':v.lider_referencia,
             'Punto de vacunación': v.punto_id,
             'Mesa': v.mesa_vacunacion,
-            'Líder': v.lider_id
+            'Contratista': v.lider_id
         })
 
     df = pd.DataFrame(data)
@@ -231,6 +234,7 @@ def editar_votante(id):
         votante.ocupacion = request.form['ocupacion']
         votante.punto_id = request.form['punto']
         votante.mesa = request.form['mesa']
+        votante.lider_referencia= request.form['lider_p']
         votante.lider_referencia = request.form['lider_r']
         votante.lider_id = request.form['lider']
 
