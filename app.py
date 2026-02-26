@@ -234,7 +234,7 @@ def editar_votante(id):
         votante.ocupacion = request.form['ocupacion']
         votante.punto_id = request.form['punto']
         votante.mesa = request.form['mesa']
-        votante.lider_referencia= request.form['lider_p']
+        votante.lider_principal= request.form['lider_p']
         votante.lider_referencia = request.form['lider_r']
         votante.lider_id = request.form['lider']
 
