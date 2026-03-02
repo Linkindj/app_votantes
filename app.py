@@ -93,7 +93,6 @@ def registrar():
         votante = Votante(
             nombre=request.form['nombre'].strip().upper(),
             cedula=cedula,
-            edad=request.form['edad'],
             ocupacion=request.form['ocupacion'],
             telefono=request.form['telefono'],
             punto_id=request.form['punto'],
@@ -122,7 +121,6 @@ def exportar_excel():
         data.append({
             'Nombre': v.nombre,
             'Cédula': v.cedula,
-            'Edad': v.edad,
             'Lider Principal':v.lider_principal,
             'Lider que recomineda':v.lider_referencia,
             'Punto de vacunación': v.punto_id,
@@ -229,7 +227,6 @@ def editar_votante(id):
 
     if request.method == 'POST':
         votante.nombre = request.form['nombre'].upper()
-        votante.edad = request.form['edad']
         votante.telefono = request.form['telefono']
         votante.ocupacion = request.form['ocupacion']
         votante.punto_id = request.form['punto']

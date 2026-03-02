@@ -19,7 +19,6 @@ class Votante(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100))
     cedula = db.Column(db.String(20), unique=True)
-    edad = db.Column(db.String(20))
     ocupacion=db.Column(db.String(30))
     telefono=db.Column(db.String(20))
     punto_id = db.Column(db.Integer, db.ForeignKey('lugar_votacion.id'))
