@@ -51,9 +51,12 @@
         </div>
 <div class="mb-2">
             <label class="form-label">Télefono</label>
-            <input type="number" name="telefono"
-                   class="form-control"
-                   value="{{ votante.telefono}}" required>
+           <select name="ocupacion" id="ocupacion" class="form-control mb-2" required>
+                                <option value="">Rol</option>
+                                <option value="Tetigos">Testigo</option>
+                                <option value="Dinamizador">Dinamizador</option>
+                                <option value="Jurado">Jurado</option>
+                        </select>
         </div>
 
         <div class="mb-2">

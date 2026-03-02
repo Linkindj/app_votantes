@@ -26,8 +26,13 @@
                     <small id="mensajeCedula"></small>
                     <input type="number" name="edad" class="form-control mb-2" placeholder="Edad" required>
                     <input type="number" name="telefono" class="form-control mb-2" placeholder="Télefono" required>
-                    <input name="ocupacion" class="form-control mb-2" placeholder="Ocupación" required>
-                    <select name="punto" class="form-control mb-2" required>
+                      <select name="ocupacion" id="ocupacion" class="form-control mb-2" required>
+                                <option value="">Rol</option>
+                                <option value="Tetigos">Testigo</option>
+                                <option value="Dinamizador">Dinamizador</option>
+                                <option value="Jurado">Jurado</option>
+                        </select>
+                                            <select name="punto" class="form-control mb-2" required>
         <option value="">Seleccione punto de votación</option>
         {% for punto in puntos %}
             <option value="{{ punto.id }}">{{ punto.nombre }}</option>
